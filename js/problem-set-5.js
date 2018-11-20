@@ -28,6 +28,15 @@ function mario() {
 
   // WRITE YOUR EXERCISE 1 CODE HERE
 
+  let input = prompt("Please enter a number between 1 and 23");
+  let x = 0;
+  if (input > 1 || input < 23) {
+    while (x != input) {
+      x++;
+    }
+  }
+  let mario1 = document.getElementById ("mario-easy-output");
+  mario1.innerHTML = "input";
   ////////////////////////// DO NOT MODIFY
   check('mario', height); // DO NOT MODIFY
   ////////////////////////// DO NOT MODIFY
