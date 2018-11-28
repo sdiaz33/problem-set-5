@@ -28,26 +28,31 @@ function mario() {
 
   // WRITE YOUR EXERCISE 1 CODE HERE
 
-  let input = prompt("Please enter a number between 1 and 23");
+  // loop
+  let input = Number(prompt("Please enter a number between 1 and 23"));
   height = input;
-  let x = 0;
-  if (height > 1 || height < 23) {
-    while (x < height) {
-      x++;
-      add = height++;
-    }
-  }
-  let invalid = (x > height);
-  if (height = invalid) {
-    let check = prompt("If input is invalid, please enter another input");
-  }
+
   let hash = "#";
-  let space = "<br/>";
-  let add = "##";
-  add = add + "##";
+  let newline = "<br/>";
+  let space = "&nbsp;";
+  let output = "<code>";
+
+  if (height >= 1 && height <= 23) {
+    for (let i = 1; i <= height; i++) {
+      for (var j = 1; j <= (height - i); j++) {
+        output += space;
+      }
+      for (var k = 0; k <= i; k++) {
+        output += hash;
+      }
+      output += newline;
+    }
+    output += "</code>";
+  }
 
   let mario1 = document.getElementById("mario-easy-output");
-  mario1.innerHTML = add + hash + space;
+  mario1.innerHTML = output;
+
   ////////////////////////// DO NOT MODIFY
   check('mario', height); // DO NOT MODIFY
   ////////////////////////// DO NOT MODIFY
@@ -75,29 +80,52 @@ function mario() {
  * All output should be displayed on the page, not printed to the console.
  */
 
-// function marioAgain() {
-//
-//   ////////////// DO NOT MODIFY
-//   let height; // DO NOT MODIFY
-//   ////////////// DO NOT MODIFY
-//   //
-//   // let input = prompt("Please enter a number between 1 and 23");
-//   // let x = 0;
-//   // if (input > 1 || input < 23) {
-//   //   while (x != input) {
-//   //     x++;
-//   //   }
-//   // }
-//   // let marioAgain = document.getElementById ("mario-hard-output");
-//   // marioAgain.innerHTML = "input";
-//   //
-//   // }
-//
-//   //////////////////////////////// DO NOT MODIFY
-//   check('mario-again', height); // DO NOT MODIFY
-//   //////////////////////////////// DO NOT MODIFY
-//
-//
+function marioAgain() {
+
+  ////////////// DO NOT MODIFY
+  let height; // DO NOT MODIFY
+  ////////////// DO NOT MODIFY
+  let input = Number(prompt("Please enter a number between 1 and 23"));
+  height = input;
+
+  let hash = "#";
+  let newline = "<br/>";
+  let space = "&nbsp;";
+  let output = "<code>";
+
+  if (height >= 1 && height <= 23) {
+    for (let i = 1; i <= height; i++) {
+      for (var j = 1; j <= (height - i); j++) {
+        output += space;
+      }
+      for (var k = 0; k <= i; k++) {
+        output += hash;
+      }
+      output += newline;
+      }
+      for (var j = 1; j <= (height - i); j++) {
+        output += space;
+      }
+      for (var k = 0; k <= i; k++) {
+        output += hash;
+      }
+      output += newline;
+    }
+    output += "</code>";
+  }
+
+  let marioAgain1 = document.getElementById ("mario-hard-output");
+  marioAgain1.innerHTML = "output";
+
+  }
+  // 2 spaces
+  // another hash tag loop
+
+  //////////////////////////////// DO NOT MODIFY
+  check('mario-again', height); // DO NOT MODIFY
+  //////////////////////////////// DO NOT MODIFY
+}
+
 // /*
 //  * Credit. 10 points.
 //  *
