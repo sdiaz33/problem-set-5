@@ -101,10 +101,8 @@ function marioAgain() {
       for (var k = 0; k <= i; k++) {
         output += hash;
       }
-      output += newline;
-      }
-      for (var j = 1; j <= (height - i); j++) {
-        output += space;
+      var v = 1; {
+        output += space + space;
       }
       for (var k = 0; k <= i; k++) {
         output += hash;
@@ -115,12 +113,7 @@ function marioAgain() {
   }
 
   let marioAgain1 = document.getElementById ("mario-hard-output");
-  marioAgain1.innerHTML = "output";
-
-  }
-  // 2 spaces
-  // another hash tag loop
-
+  marioAgain1.innerHTML = output;
   //////////////////////////////// DO NOT MODIFY
   check('mario-again', height); // DO NOT MODIFY
   //////////////////////////////// DO NOT MODIFY
@@ -186,37 +179,50 @@ function marioAgain() {
 //   ///////////////////////// DO NOT MODIFY
 // }
 //
-// /*
-//  * Guess. 5 points.
-//  *
-//  * Write a function that generates a random number, and asks the user to
-//  * try to guess this number. When all is said and done, your function
-//  * should output the random number and the number of attempts it took the
-//  * user to correctly guess that number. Your function should also provided
-//  * helpful hints, indicating whether the most recent guess was greater than
-//  * or less than the target.
-//  *
-//  * Random numbers must be between 1 and 1000. User guesses must be integers
-//  * within the range [1, 1000], and users should be continuously re-prompted
-//  * until they comply with this restriction. In the event a user guesses
-//  * something that violates this restriction, an attempt should not be
-//  * recorded.
-//  *
-//  * As always, certain portions of the starter code are critical to the
-//  * the feedback script. Please do not modify these sections. They are
-//  * clearly marked.
-//  *
-//  * All output should be displayed on the page, not printed to the console.
-//  */
-//
-// function guess() {
-//
-//   // WRITE YOUR EXERCISE 4 CODE HERE
-//
-//   ////////////////// DO NOT MODIFY
-//   check('guess'); // DO NOT MODIFY
-//   ////////////////// DO NOT MODIFY
-// }
+/*
+ * Guess. 5 points.
+ *
+ * Write a function that generates a random number, and asks the user to
+ * try to guess this number. When all is said and done, your function
+ * should output the random number and the number of attempts it took the
+ * user to correctly guess that number. Your function should also provided
+ * helpful hints, indicating whether the most recent guess was greater than
+ * or less than the target.
+ *
+ * Random numbers must be between 1 and 1000. User guesses must be integers
+ * within the range [1, 1000], and users should be continuously re-prompted
+ * until they comply with this restriction. In the event a user guesses
+ * something that violates this restriction, an attempt should not be
+ * recorded.
+ *
+ * As always, certain portions of the starter code are critical to the
+ * the feedback script. Please do not modify these sections. They are
+ * clearly marked.
+ *
+ * All output should be displayed on the page, not printed to the console.
+ */
+
+function guess() {
+
+  let input = Math.floor((Math.random() * 1000) - 1);
+  let guess = 1;
+  document.getElementById ("guess-output");
+  let x = document.getElementById("guessField").value;
+  if (input == x) {
+    alert("Congratulations! You've guessed the correct number");
+  } else if (x > y) /*if guessed number is greater than actual number*/ {
+      guess++
+      alert("Incorrect. Try a smaller number.");
+  } else /*if guessed number is smaller than actual number*/ {
+      guess++
+      alert("Incorrect. Try a larger number.");
+  }
+
+  guess1.innerHTML = input;
+  ////////////////// DO NOT MODIFY
+  check('guess'); // DO NOT MODIFY
+  ////////////////// DO NOT MODIFY
+}
 //
 // /*
 //  * Hurricane. 5 points.
@@ -242,16 +248,36 @@ function marioAgain() {
 //  * All output should be displayed on the page, not printed to the console.
 //  */
 //
-// function hurricane() {
-//
-//   ///////////////// DO NOT MODIFY
-//   let windspeed; // DO NOT MODIFY
-//   ///////////////// DO NOT MODIFY
-//
-//   ///////////////////////////////// DO NOT MODIFY
-//   check('hurricane', windspeed); // DO NOT MODIFY
-//   ///////////////////////////////// DO NOT MODIFY
-// }
+function hurricane() {
+
+  ///////////////// DO NOT MODIFY
+  let windspeed; // DO NOT MODIFY
+  ///////////////// DO NOT MODIFY
+  windspeed = -1;
+  while (windspeed < 0 || Number.isInteger(windspeed)==false){
+    windspeed = Number(prompt("Enter a positive in miles per hour"));
+  }
+    let div = document.getElementById("hurricane-output");
+    if(windspeed <= 38){
+      div.innerHTML = "The skies are calm...";
+    } else if (windspeed >= 39 && windspeed <= 73) {
+      div.innerHTML = "Tropical Storm.";
+    } else if (windspeed >= 74 && windspeed <= 95) {
+      div.innerHTML = "Category 1 Hurricane.";
+    } else if (windspeed >= 96 && windspeed <= 110) {
+      div.innerHTML = "Category 2 Hurricane.";
+    } else if (windspeed >= 111 && windspeed <= 129) {
+      div.innerHTML = "Category 3 Hurricane.";
+    } else if (windspeed >= 130 && windspeed <= 156) {
+      div.innerHTML = "Category 4 Hurricane.";
+    } else if (windspeed >= 157) {
+      div.innerHTML = "Category 5 Hurricane.";
+    }
+
+  ///////////////////////////////// DO NOT MODIFY
+  check('hurricane', windspeed); // DO NOT MODIFY
+  ///////////////////////////////// DO NOT MODIFY
+}
 //
 // /*
 //  * Gymnastics. 5 points.
