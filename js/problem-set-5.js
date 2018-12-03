@@ -164,43 +164,123 @@ function credit() {
   //////////// DO NOT MODIFY
   let card; // DO NOT MODIFY
   //////////// DO NOT MODIFY
-
-  let odd_sum=0;
-  let even_sum=0;
-  while (true) {
-    card=prompt("Enter your credit card number: ");
-  if ((card.length == 16 || card.length == 15 || card.length == 13) && Number.isInteger(Number(card)))
-  break; }
-
-  for(let i = card.length-2;i >= 0;i-=2) {
-    let num = Number(card[i])*2;
-    let strnum = num.toString();
-    let sum_num = 0;
-    for (let j = 0;j < strnum.length;j++) {
-      sum_num = sum_num + Number(strnum[j]);
+  
+  
+ while (true) {
+    height = Number(prompt("Please enter integer between 1 and 23."));
+    if(height>=1 && height<=23 && Number.isInteger(height)){
+      break;
     }
-    even_sum = sum_num + even_sum;
-    console.log(even_sum);
-  }
-  for(let k = card.length-1; k >= 0;k-=2) {
-    odd_sum = odd_sum + Number(card[k])
-  }
-  console.log(odd_sum);
 
-  if (card.length==15 && (card[0]==3 &&(card[1]==7 || card[1]==4)) && (odd_sum+even_sum)%10==0){
-    document.getElementById("credit-output").innerHTML="<img src ='./images/amex.png'/>";
   }
-  else if ((card.length==13 || card.length==16) && card[0]==4 && (odd_sum+even_sum)%10==0){
-    document.getElementById("credit-output").innerHTML="<img src ='./images/visa.png'/>";
+  let i=1;
+  let hash= `#`;
+  let spaces= height-2;
+  let lines= "<code>";
+  while (i <= height){
+    let blank=``;
+    for(let b=0;b<=spaces;b++){
+      blank+= "&nbsp;";
+    }
+    spaces--;
+    hash+=`#`;
+    lines=lines+blank+hash+"&nbsp"+"&nbsp"+hash+"</br>";
+    i++;
   }
-  else if (card.length==16 && (card[0]==5 && (card[1]==1 || card[1]==2 || card[1]==4 || card[1]==5)) && (odd_sum+even_sum)%10==0){
-    document.getElementById("credit-output").innerHTML="<img src ='./images/mastercard.png'/>";
-  }
-  else {
-    document.getElementById("credit-output").innerHTML="<img src ='./images/invalid.png'/>";
+//lines = lines + "<br>";
+document.getElementById("mario-hard-output").innerHTML=lines;
+lines=lines+"</code>"
+  //////////////////////////////// DO NOT MODIFY
+  check('mario-again', height); // DO NOT MODIFY
+  //////////////////////////////// DO NOT MODIFY
+}
+
+/*
+ * Credit. 10 points.
+ *
+ * Write a function that prompts the user for a credit card number (valid
+ * and invalid examples will be provided), and displays either:
+ *   - an invalid image (provided)
+ *   - an American Express image (provided)
+ *   - a Mastercard image (provided)
+ *   - a Visa image (provided)
+ *
+ * We'll use Luhn's algorithm to determine the validity of a credit card
+ * number. Review the steps of the algorithm below.
+ *
+ *   0. Multiply every other digit by 2, starting with the number’s
+ *      second-to-last digit, and then add those products' digits together.
+ *   1. Add the sum to the sum of the digits that weren’t multiplied by 2.
+ *   2. If the total’s last digit is 0 (or, put more formally, if the total
+ *      modulo 10 is congruent to 0), the number is valid!
+ *
+ * American Express uses 15-digit numbers, starting with 34 or 37.
+ * Mastercard uses uses 16-digit numbers, starting with 51, 52, 53, 54,
+ * or 55. Visa uses 13- or 16-digit numbers, starting with 4.
+ *
+ * 378282246310005 should verify as American Express.
+ * 371449635398431 should verify as American Express.
+ * 5555555555554444 should verify as Mastercard.
+ * 5105105105105100 should verify as Mastercard.
+ * 4111111111111111 should verify as Visa.
+ * 4012888888881881 should verify as Visa.
+ *
+ * Credit card numbers must be integers. Users should be continuously
+ * re-prompted until they comply with this restriction.
+ *
+ * As always, certain portions of the starter code are critical to the
+ * the feedback script. Please do not modify these sections. They are
+ * clearly marked.
+ *
+ * All output should be displayed on the page, not printed to the console.
+ */
+
+function credit() {
+
+  //////////// DO NOT MODIFY
+  let card; // DO NOT MODIFY
+  //////////// DO NOT MODIFY
+
+  while(true) {
+    card = prompt("Please enter valid credit card number.");
+    if ((card.length==16 || card.length==15 || card.length==13) && Number.isInteger(Number(card))){
+    break;
+    }
   }
 
-  card=Number(card);
+  let sumEven=0;
+  let sumOdd=0;
+  for(i=card.length-2; i>=0; i-=2){
+  let digit= Number(card[i])*2;
+  let stringDig= digit.toString();
+  let sum=0;
+    for (j=0; j<stringDig.length; j++){
+    sum=sum+Number(stringDig[j]);
+    }
+  sumEven= sum+sumEven;
+  }
+
+  for(k=card.length-1; k>=0; k-=2){
+  sumOdd = sumOdd+Number(card[k]);
+  }
+  let sumTotal= sumOdd+sumEven;
+
+  if(card.length==15 && (card[0]==3 && (card[1]==4 || card[1]==7)) && sumTotal%10==0) {
+   document.getElementById("credit-output").innerHTML="<img src ='./images/amex.png'/>";  }
+
+ else if
+   ((card.length==16 || card.length==13) && card[0]==4 && sumTotal%10==0) {
+   document.getElementById("credit-output").innerHTML="<img src ='./images/visa.png'/>";  }
+
+ else if
+   (card.length==16 && card[0]==5 && (card[1]==1 || card[1]==2 || card[1]==3 || card[1]==4 || card[1]==5) && sumTotal%10==0) {
+   document.getElementById("credit-output").innerHTML="<img src ='./images/mastercard.png'/>"; } 
+  
+ else {
+    document.getElementById("credit-output").innerHTML="<img src ='./images/invalid.png'/>"; }
+
+card=Number(card);
+  
   /*
    * NOTE: After reading in the card number and storing it in the 'card'
    *       variable, do not modify it. If you find it necessary to manipulate
