@@ -167,23 +167,23 @@ function credit() {
 
   let odd_sum=0;
   let even_sum=0;
-  while (true){
+  while (true) {
     card=prompt("Enter your credit card number: ");
-  if ((card.length==16 || card.length==15 || card.length==13) && Number.isInteger(Number(card)))
-  break;}
+  if ((card.length == 16 || card.length == 15 || card.length == 13) && Number.isInteger(Number(card)))
+  break; }
 
-  for(let i=card.length-2;i>=0;i-=2) {
-    let num=Number(card[i])*2;
-    let strnum=num.toString();
-    let sum_num=0;
-    for (let j=0;j<strnum.length;j++){
-      sum_num=sum_num+Number(strnum[j]);
+  for(let i = card.length-2;i >= 0;i-=2) {
+    let num = Number(card[i])*2;
+    let strnum = num.toString();
+    let sum_num = 0;
+    for (let j = 0;j < strnum.length;j++) {
+      sum_num = sum_num + Number(strnum[j]);
     }
-    even_sum=sum_num+even_sum;
+    even_sum = sum_num + even_sum;
     console.log(even_sum);
   }
-  for(let k=card.length-1; k>=0;k-=2){
-    odd_sum=odd_sum+Number(card[k])
+  for(let k = card.length-1; k >= 0;k-=2) {
+    odd_sum = odd_sum + Number(card[k])
   }
   console.log(odd_sum);
 
@@ -237,7 +237,7 @@ function credit() {
  */
 
 function guess() {
-  
+
   let number = Math.floor(Math.random()*999)+1;
   let attempts = 0;
   let correct_answer = false;
@@ -258,7 +258,7 @@ function guess() {
         alert("Incorrect. Try a larger number.")
       }
     }
-    
+  }
   ////////////////// DO NOT MODIFY
   check('guess'); // DO NOT MODIFY
   ////////////////// DO NOT MODIFY
@@ -360,7 +360,7 @@ function gymnastics() {
 
    let op = document.getElementById("gymnastics-output");
    op.innerHTML = `Discarded: ${low}, ${high}<br/>Score: ${avg}`;
-  
+
   /*
    * NOTE: The 'total' variable should be representative of the sum of all
    *       six of the judges' scores.
@@ -485,7 +485,7 @@ function reportCard() {
 
       let op = document.getElementById("report-card-output");
       op.innerHTML = `Tests: ${testAvg}<br/>Quizzes: ${quizAvg}<br/>Homework: ${homeworkAvg}<br/>Grade: ${grade}`;
-  
+
   /////////////////////// DO NOT MODIFY
   check('report-card', // DO NOT MODIFY
     testTotal, ////////// DO NOT MODIFY
