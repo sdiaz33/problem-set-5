@@ -172,7 +172,7 @@ function credit() {
       break;
     }
 
-  }
+ }
   let i=1;
   let hash= `#`;
   let spaces= height-2;
